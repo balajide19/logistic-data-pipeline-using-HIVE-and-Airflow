@@ -24,11 +24,11 @@
 
 Dataset: 
 
-HIVE_LOAD_AIRFLOW.PY:
+**HIVE_LOAD_AIRFLOW.PY:**
 
 This Python DAG file automates the process of loading logistics data into Hive on Google Cloud Dataproc and includes tasks for sensing new data, database and table creation, data loading, and data archival. The tasks are executed based on the specified dependencies and schedule interval. Let us see it in detail:
 
-# Import Statements:
+**IMPORT STATEMENTS:**
 
 These lines import various modules and classes from Apache Airflow and Google Cloud libraries.
 
@@ -42,7 +42,7 @@ These lines import various modules and classes from Apache Airflow and Google Cl
 
 # CODE EXPLANATION:
 
-# Default Arguments and DAG Definition:
+**DEFAULT ARGUMENTS AND DAG DEFINITION:**
 
 <img width="588" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/7bfd9979-873e-4f64-8ef7-b3c0a4ec5f93">
 
@@ -50,9 +50,9 @@ These lines import various modules and classes from Apache Airflow and Google Cl
 1) Here I'm creating "default_args" with default arguments and interval time.
 2) Creating an instance of a DAG named 'hive_load_airflow_dag' with various parameters, including the default arguments, description, schedule interval, and start date.
 
-# DAG TASKS:
+**DAG TASKS:**
 
-# SENSING NEW FILE INSIDE OUR BUCKET:
+**SENSING NEW FILE INSIDE OUR BUCKET:**
 
 <img width="588" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/9922859b-9f5d-45bd-ae18-08bc9c437c0d">
 
@@ -60,7 +60,7 @@ These lines import various modules and classes from Apache Airflow and Google Cl
 This task uses the "GCSObjectsWithPrefixExistenceSensor" sensor to sense the existence of new files under input_data bucket to find files like 'logistics_%'  using the prefix parameter 'input_data/logistics_'.
 
 
-# CREATING DATABASE AND HIVE EXTERNAL TABLE:
+**CREATING DATABASE AND HIVE EXTERNAL TABLE:**
 
 
 <img width="637" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/035151e4-8500-4c08-8633-489c412e879f">
@@ -70,7 +70,7 @@ This task uses the "GCSObjectsWithPrefixExistenceSensor" sensor to sense the exi
 2) So this task will be used in Creating HIVE DB named 'logistics_db'and external table 'logistics_data' if not exists in GCP Dataproc cluster, which will fetch data from 'gs://logistic-raw-data/input_data/' location.
 
 
-# CREATING HIVE PARTIONED TABLE AND LOADING DATA INTO TABLE:
+**CREATING HIVE PARTIONED TABLE AND LOADING DATA INTO TABLE:**
 
 
 <img width="659" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/17f3503a-800e-4e52-9933-579ca9a46a57">
@@ -80,7 +80,7 @@ This task uses the "GCSObjectsWithPrefixExistenceSensor" sensor to sense the exi
 2) Once table is created, we're setting the necessary for dynamic partioned and loading data from from previously created external table to our partioned table.
 
 
-# MOVING FILES TO ARCHIVE BUCKET AND DEFINING TASK DEPENDENCIES:
+**MOVING FILES TO ARCHIVE BUCKET AND DEFINING TASK DEPENDENCIES:**
 
 
 <img width="672" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/fe430c7e-b321-43d2-8d1f-aa3222dded5e">
