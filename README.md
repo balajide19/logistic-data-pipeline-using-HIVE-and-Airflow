@@ -30,3 +30,13 @@ This python script defines an Apache Airflow DAG for a data pipeline that loads 
 
 Import Statements:
 
+These lines import various modules and classes from Apache Airflow and Google Cloud libraries.
+
+<img width="545" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/7e25e644-d1c4-4237-8ec0-b88ce3c05c5e">
+
+GCSObjectsWithPrefixExistenceSensor - This Sensor is used to detect the existence of files in a Google Cloud Storage (GCS) bucket with a specific prefix.
+DataprocSubmitHiveJobOperator - This is an Airflow operator for submitting Hive jobs on Google Cloud Dataproc clusters.
+days_ago - This Airflow utility function used for calculating a date that is a specified number of days in the past.
+
+
+
