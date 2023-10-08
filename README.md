@@ -16,13 +16,17 @@
 # GOALS:
 
 1) To create a Pipeline which is used to ingest daily logistic data from GCP Storage Bucket to HIVE Partition table.
-2) Inside GCP bucket input_data, csv files will be received and it needs to be ingested into Hive partioned table without any duplicate Data.
-3) So once a csv file is inserted into table, it must be archived in a different bucket (archive) to avoid duplication.
+2) Inside input_data bucket, we need to check whether file is received or not and it needs to be ingested into Hive partioned table without any duplicate Data.
+3) So once a csv file is received it should be inserted into table and it must be archived in a different bucket (archive) to avoid duplication.
 4) Since, its a daily process we need to automate this process using Airflow.
 
 # BUILDIND DATA PIPELINE:
 
 Dataset: 
 
+HIVE_LOAD_AIRFLOW.PY:
 
+This python script defines an Apache Airflow DAG for a data pipeline that loads logistics data into Hive on Google Cloud Dataproc. Let's break down the key components and tasks in this script:
+
+Import Statements:
 
