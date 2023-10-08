@@ -11,7 +11,7 @@
 
 1) GCP Storage Bucket
 2) HIVE 
-3) GCP Airflow Composer
+3) Airflow Cloud Composer
 
 # BUILDIND DATA PIPELINE:
 
