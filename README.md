@@ -36,7 +36,7 @@ These lines import various modules and classes from Apache Airflow and Google Cl
 <img width="588" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/7e25e644-d1c4-4237-8ec0-b88ce3c05c5e">
 
 
-1) GCSObjectsWithPrefixExistenceSensor --> we are using this Sensor is used to detect the existence of files in a Google Cloud Storage (GCS) bucket with a specific prefix.
+1) GCSObjectsWithPrefixExistenceSensor --> we are using this Sensor to detect the existence of files in a Google Cloud Storage (GCS) bucket with a specific prefix.
 3) DataprocSubmitHiveJobOperator --> This is an Airflow operator for submitting Hive jobs on Google Cloud Dataproc clusters.
 4) days_ago --> This Airflow utility function used for calculating a date that is a specified number of days in the past.
 
@@ -85,9 +85,34 @@ This task uses the "GCSObjectsWithPrefixExistenceSensor" sensor to sense the exi
 
 <img width="672" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/fe430c7e-b321-43d2-8d1f-aa3222dded5e">
 
-
 1) This task will move the logistic data file which we received under input_data bucket to 'archive' bucket for avoiding duplicate data ingestion.
 2) Tasks are executed sequentially by defining the task dependencies in the order as "sense_logistics_file >> create_hive_database >> create_hive_table >> create_partitioned_table >> set_hive_properties_and_load_partitioned >> archive_processed_file".
 
+
+
+
+# DEPLOYMENT:
+
+DAG IS TRIGGERRED:
+
+<img width="943" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/d11c8bf2-0868-4ea9-9b1d-6bc469a61670">
+
+CHECKING LOGS:
+
+<img width="942" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/df5b5526-30f3-48a1-b8d0-7edeb5cc4561">
+
+Validating DB and Table creation:
+
+<img width="683" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/fb16ef6d-f616-4575-b526-be11c3043a34">
+
+Once, the dag is triggerred our HIVE DB, external table and partioned table is created as expected.
+
+<img width="837" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/c6c51a7a-2092-4110-9b46-b4588d8b3322">
+
+Partioned table is partioned by date correctly/
+
+<img width="769" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/ead2b273-696a-441b-be4a-f8be277a88f5">
+
+After inserting records in HIVE Table, file is moved from "input_data" bucket to "archival" bucket hence achieving non-duplication of data.
 
 
