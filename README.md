@@ -107,12 +107,13 @@ Validating DB and Table creation:
 
 Once, the dag is triggerred our HIVE DB, external table and partioned table is created as expected.
 
+Partioned table is partioned by date correctly.
+
 <img width="837" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/c6c51a7a-2092-4110-9b46-b4588d8b3322">
 
-Partioned table is partioned by date correctly/
+After inserting records in HIVE Table, file is moved from "input_data" bucket to "archival" bucket hence achieving non-duplication of data.
 
 <img width="769" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/ead2b273-696a-441b-be4a-f8be277a88f5">
 
-After inserting records in HIVE Table, file is moved from "input_data" bucket to "archival" bucket hence achieving non-duplication of data.
 
 
