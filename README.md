@@ -93,15 +93,15 @@ This task uses the "GCSObjectsWithPrefixExistenceSensor" sensor to sense the exi
 
 # DEPLOYMENT:
 
-DAG IS TRIGGERRED:
+**DAG IS TRIGGERRED:**
 
 <img width="943" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/d11c8bf2-0868-4ea9-9b1d-6bc469a61670">
 
-CHECKING LOGS:
+**CHECKING LOGS:**
 
 <img width="942" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/df5b5526-30f3-48a1-b8d0-7edeb5cc4561">
 
-Validating DB and Table creation:
+**Validating DB and Table creation:**
 
 <img width="683" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/fb16ef6d-f616-4575-b526-be11c3043a34">
 
@@ -110,6 +110,8 @@ Once, the dag is triggerred our HIVE DB, external table and partioned table is c
 Partioned table is partioned by date correctly.
 
 <img width="837" alt="image" src="https://github.com/balajide19/logistic-data-pipeline-using-HIVE-and-Airflow/assets/146630003/c6c51a7a-2092-4110-9b46-b4588d8b3322">
+
+**ARCHIVAL OF OLD FILES:**
 
 After inserting records in HIVE Table, file is moved from "input_data" bucket to "archival" bucket hence achieving non-duplication of data.
 
